@@ -1,50 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { client } = require('../database/database'); 
-/*
-//test query
-router.get("/", (req, res) => {
-    client.query('Select * from students', (err, res) => {
-        if(!err){
-            console.log("connected to database")
-            console.table(res.rows)
-        } else {
-            console.log(err.message)
-        }
-    })
-    res.send("Success")
-});
 
-//Get student details
-
-router.get('/:studentId', (req, res) => {
-    const { studentId } = req.params;
-    const query = 
-        `SELECT s.student_id, s.student_name, s.major, s.gpa, s.year, s.email, s.address, s.date_of_birth, s.phone_number, a.advisor_name
-        FROM students s
-        INNER JOIN advisors a ON s.advisor_id = a.advisor_id
-        WHERE s.student_id = $1`;
-  
-    client.query(query, [studentId], (err, result) => {
-      if (err) {
-        console.error('Error executing query:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-        return;
-      }
-  
-      console.log('Connected to the database');
-  
-      const student = result.rows[0];
-      if (!student) {
-        res.status(404).json({ error: 'Student not found' });
-        return;
-      }
-  
-      console.table(result.rows);
-      res.json(student);
-    });
-  });
-*/
   router.get('/', (req, res) => {
     const { queryType, studentId} = req.query;
 
